@@ -1,13 +1,16 @@
-package com.kariosds.demo.domain.model;
+package com.kariosds.demo.infrastructure.h2db.entities;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
@@ -15,24 +18,32 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Builder
 @AllArgsConstructor
-@JsonInclude(JsonInclude.Include.NON_NULL)
-public class Price {
+@Entity(name = "prices")
+public class PriceEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @NotNull
     private Integer brandId;
 
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @NotNull
     private LocalDateTime startDate;
 
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @NotNull
     private LocalDateTime endDate;
 
     private Integer priceList;
 
+    @NotNull
     private Integer productId;
 
     private Integer priority;
 
+    @NotNull
     private BigDecimal price;
 
+    @NotNull
     @NotBlank
     private String currency;
 

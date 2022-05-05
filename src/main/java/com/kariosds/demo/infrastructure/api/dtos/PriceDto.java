@@ -1,22 +1,20 @@
-package com.kariosds.demo.domain.model;
+package com.kariosds.demo.infrastructure.api.dtos;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonInclude;
+import com.kariosds.demo.domain.model.Price;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.validation.constraints.NotBlank;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor
-@Builder
 @AllArgsConstructor
-@JsonInclude(JsonInclude.Include.NON_NULL)
-public class Price {
+public class PriceDto {
+    private Integer productId;
+
     private Integer brandId;
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
@@ -25,15 +23,13 @@ public class Price {
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime endDate;
 
-    private Integer priceList;
-
-    private Integer productId;
-
-    private Integer priority;
-
     private BigDecimal price;
 
-    @NotBlank
-    private String currency;
-
+    public PriceDto(Price price) {
+        this.productId = price.getProductId();
+        this.brandId = price.getBrandId();
+        this.startDate = price.getStartDate();
+        this.endDate = price.getEndDate();
+        this.price = price.getPrice();
+    }
 }

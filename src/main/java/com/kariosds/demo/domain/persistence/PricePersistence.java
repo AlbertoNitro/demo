@@ -9,5 +9,5 @@ import java.util.List;
 @Repository
 public interface PricePersistence {
 
-    List<Price> findByBrandIdOrProductIdOrStartDateGreatherThanEqualAndEndDateLessThanEqualNullSafe(Integer brandId, Integer productId, LocalDateTime applicationDate, LocalDateTime applicationDate);
+    List<Price> findByBrandIdOrProductIdOrStartDateGreatherThanEqualAndEndDateLessThanEqualNullSafe(Integer brandId, Integer productId, LocalDateTime applicationDate);
 }

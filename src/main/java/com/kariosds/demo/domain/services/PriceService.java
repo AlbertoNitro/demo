@@ -20,6 +20,6 @@ public class PriceService {
 
     public List<Price> findByBrandIdOrProductIdOrStartDateGreatherThanEqualAndEndDateLessThanEqualNullSafe(Integer brandId, Integer productId) {
         LocalDateTime applicationDate = LocalDateTime.now();
-        return pricePersistence.findByBrandIdOrProductIdOrStartDateGreatherThanEqualAndEndDateLessThanEqualNullSafe(brandId, productId, applicationDate, applicationDate);
+        return pricePersistence.findByBrandIdOrProductIdOrStartDateGreatherThanEqualAndEndDateLessThanEqualNullSafe(brandId, productId, applicationDate);
     }
 }
