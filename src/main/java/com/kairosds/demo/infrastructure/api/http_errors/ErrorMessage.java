@@ -1,4 +1,4 @@
-package com.kariosds.demo.infrastructure.api.http_errors;
+package com.kairosds.demo.infrastructure.api.http_errors;
 
 import lombok.Getter;
 import lombok.ToString;

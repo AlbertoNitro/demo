@@ -1,7 +1,7 @@
-package com.kariosds.demo.infrastructure.api.controllers;
+package com.kairosds.demo.infrastructure.api.controllers;
 
-import com.kariosds.demo.domain.services.PriceService;
-import com.kariosds.demo.infrastructure.api.dtos.PriceDto;
+import com.kairosds.demo.domain.services.PriceService;
+import com.kairosds.demo.infrastructure.api.dtos.PriceDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,10 +24,10 @@ public class PriceController {
     }
 
     @GetMapping(SEARCH)
-    public List<PriceDto> findByBrandIdOrProductIdOrStartDateGreatherThanEqualAndEndDateLessThanEqualNullSafe(
+    public List<PriceDto> findByBrandIdOrProductIdOrApplicationDate(
             @RequestParam(required = false) Integer brandId,
             @RequestParam(required = false) Integer productId) {
-        return this.priceService.findByBrandIdOrProductIdOrStartDateGreatherThanEqualAndEndDateLessThanEqualNullSafe(
+        return this.priceService.findByBrandIdOrProductIdOrApplicationDate(
                 brandId, productId).stream().map(PriceDto::new).collect(Collectors.toList());
     }
 

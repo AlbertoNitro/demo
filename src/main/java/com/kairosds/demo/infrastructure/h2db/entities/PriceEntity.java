@@ -1,14 +1,12 @@
-package com.kariosds.demo.infrastructure.h2db.entities;
+package com.kairosds.demo.infrastructure.h2db.entities;
 
+import com.kairosds.demo.domain.model.Price;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
@@ -18,7 +16,8 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Builder
 @AllArgsConstructor
-@Entity(name = "prices")
+@Entity
+@Table(name = "prices")
 public class PriceEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -46,5 +45,19 @@ public class PriceEntity {
     @NotNull
     @NotBlank
     private String currency;
+
+    public Price toPrice() {
+        return Price
+                .builder()
+                .brandId(brandId)
+                .startDate(startDate)
+                .endDate(endDate)
+                .priceList(priceList)
+                .productId(productId)
+                .priority(priority)
+                .price(price)
+                .currency(currency)
+                .build();
+    }
 
 }

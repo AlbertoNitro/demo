@@ -1,4 +1,4 @@
-package com.kariosds.demo;
+package com.kairosds.demo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

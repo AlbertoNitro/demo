@@ -1,6 +1,6 @@
-package com.kariosds.demo.infrastructure.api.http_errors;
+package com.kairosds.demo.infrastructure.api.http_errors;
 
-import com.kariosds.demo.domain.exceptions.BadRequestException;
+import com.kairosds.demo.domain.exceptions.BadRequestException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
