@@ -15,12 +15,16 @@ public class SeederDBService {
 
     @Autowired
     private PriceDao priceDao;
+
     @Getter
     private PriceEntity priceEntityWithPrice3550;
+
     @Getter
     private PriceEntity priceEntityWithPrice2545;
+
     @Getter
     private PriceEntity priceEntityWithPrice3050;
+
     @Getter
     private PriceEntity priceEntityWithPrice3895;
 

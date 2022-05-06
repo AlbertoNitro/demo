@@ -15,8 +15,11 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping(PriceController.PRICES)
 public class PriceController {
+
     public static final String PRICES = "/prices";
+
     public static final String SEARCH = "/search";
+
     private final PriceService priceService;
 
     @Autowired

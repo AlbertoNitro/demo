@@ -18,8 +18,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @TestConfig
 @Slf4j
 class PricePersistenceH2dbTest {
+
     @Autowired
     PricePersistenceH2db pricePersistenceH2db;
+
     @Autowired
     SeederDBService seederDBService;
 

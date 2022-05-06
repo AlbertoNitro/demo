@@ -6,8 +6,11 @@ import lombok.ToString;
 @Getter
 @ToString
 class ErrorMessage {
+
     private final String error;
+
     private final String message;
+
     private final Integer code;
 
     ErrorMessage(Exception exception, Integer code) {

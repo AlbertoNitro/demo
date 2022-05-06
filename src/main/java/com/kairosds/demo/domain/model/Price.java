@@ -17,6 +17,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Price {
+
     private Integer brandId;
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")

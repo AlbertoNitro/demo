@@ -18,8 +18,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @TestConfig
 @Slf4j
 public class PriceControllerTest {
+
     @Autowired
     PriceController priceController;
+
     @Autowired
     SeederDBService seederDBService;
 

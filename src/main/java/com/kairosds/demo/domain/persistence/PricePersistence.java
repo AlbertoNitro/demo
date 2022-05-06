@@ -10,4 +10,5 @@ import java.util.List;
 public interface PricePersistence {
 
     List<Price> findFirstByBrandIdAndProductIdAndStartDateLessThanEqualAndEndDateGreaterThanEqualOrderByStartDateDesc(Integer brandId, Integer productId, LocalDateTime startDate, LocalDateTime endDate);
+
 }
