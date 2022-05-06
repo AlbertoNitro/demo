@@ -27,9 +27,11 @@ public class PriceEntity {
     private Integer brandId;
 
     @NotNull
+    @Column(columnDefinition = "TIMESTAMP")
     private LocalDateTime startDate;
 
     @NotNull
+    @Column(columnDefinition = "TIMESTAMP")
     private LocalDateTime endDate;
 
     private Integer priceList;

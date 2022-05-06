@@ -5,6 +5,7 @@ import com.kairosds.demo.domain.persistence.PricePersistence;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -17,7 +18,7 @@ public class PriceService {
         this.pricePersistence = pricePersistence;
     }
 
-    public List<Price> findByBrandIdOrProductIdOrApplicationDate(Integer brandId, Integer productId) {
-        return pricePersistence.findByBrandIdOrProductIdOrApplicationDate(brandId, productId);
+    public List<Price> findFirstByBrandIdAndProductIdAndStartDateLessThanEqualAndEndDateGreaterThanEqualOrderByStartDateDesc(Integer brandId, Integer productId, LocalDateTime startDate, LocalDateTime endDate) {
+        return pricePersistence.findFirstByBrandIdAndProductIdAndStartDateLessThanEqualAndEndDateGreaterThanEqualOrderByStartDateDesc(brandId, productId, startDate, endDate);
     }
 }

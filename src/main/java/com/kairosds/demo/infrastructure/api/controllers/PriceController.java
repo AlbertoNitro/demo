@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -24,11 +25,12 @@ public class PriceController {
     }
 
     @GetMapping(SEARCH)
-    public List<PriceDto> findByBrandIdOrProductIdOrApplicationDate(
-            @RequestParam(required = false) Integer brandId,
-            @RequestParam(required = false) Integer productId) {
-        return this.priceService.findByBrandIdOrProductIdOrApplicationDate(
-                brandId, productId).stream().map(PriceDto::new).collect(Collectors.toList());
+    public List<PriceDto> findFirstByBrandIdAndProductIdAndStartDateLessThanEqualAndEndDateGreaterThanEqualOrderByStartDateDesc(
+            @RequestParam Integer brandId,
+            @RequestParam Integer productId,
+            @RequestParam LocalDateTime applicationDate) {
+        return this.priceService.findFirstByBrandIdAndProductIdAndStartDateLessThanEqualAndEndDateGreaterThanEqualOrderByStartDateDesc(brandId, productId, applicationDate, applicationDate)
+                .stream().map(PriceDto::new).collect(Collectors.toList());
     }
 
 }
