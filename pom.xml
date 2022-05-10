@@ -30,6 +30,9 @@
         <maven-failsafe-plugin.version>2.21.0</maven-failsafe-plugin.version>
         <!-- Coverage report -->
         <jacoco.version>0.8.5</jacoco.version>
+        <sonar.coverage.jacoco.xmlReportPaths>
+            ../demo/target/site/jacoco-aggregate/jacoco.xml
+        </sonar.coverage.jacoco.xmlReportPaths>
         <!-- Test -->
         <junit-platform-surefire-provider-version>1.2.0</junit-platform-surefire-provider-version>
         <!-- Others -->

@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @TestConfig
 @Slf4j
-public class PriceControllerTest {
+class PriceControllerTest {
 
     private final long BRAND_ID_DEFAULT = 1L;
     private final long PRODUCT_ID_DEFAULT = 35455L;
