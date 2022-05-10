@@ -1,5 +1,6 @@
 package com.kairosds.demo.domain.services;
 
+import com.kairosds.demo.application.use_cases.FindCurrentPriceUseCase;
 import com.kairosds.demo.domain.exceptions.NotFoundCurrentPriceException;
 import com.kairosds.demo.domain.model.Price;
 import com.kairosds.demo.domain.persistence.PricePersistence;
@@ -14,7 +15,7 @@ import java.util.stream.Collectors;
 
 @Service
 @Slf4j
-public class PriceService {
+public class PriceService implements FindCurrentPriceUseCase {
 
     private final PricePersistence pricePersistence;
 

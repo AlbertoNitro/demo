@@ -26,7 +26,8 @@
 ```sh
 > mvn spring-boot:run 
 ```
-5. Enjoy!
+5. La API REST queda expuesta en la URL: **http://localhost:8082/api/v0**
+6. Para comprobarlo puede realizar una petición HTTP de tipo GET a **http://localhost:8082/api/v0/ping**
 
 ### Arquitectura hexagonal (diagrama de paquetes)
 ![Arquitectura hexagonal - Diagrama de paquetes](docs/diagrama-de-paquetes.png))

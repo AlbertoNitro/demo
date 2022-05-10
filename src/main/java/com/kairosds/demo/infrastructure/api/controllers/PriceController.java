@@ -1,6 +1,6 @@
 package com.kairosds.demo.infrastructure.api.controllers;
 
-import com.kairosds.demo.domain.services.PriceService;
+import com.kairosds.demo.application.use_cases.FindCurrentPriceUseCase;
 import com.kairosds.demo.infrastructure.api.dtos.PriceDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -19,11 +19,11 @@ public class PriceController {
 
     public static final String SEARCH = "/search";
 
-    private final PriceService priceService;
+    private final FindCurrentPriceUseCase findCurrentPriceUseCase;
 
     @Autowired
-    public PriceController(PriceService priceService) {
-        this.priceService = priceService;
+    public PriceController(FindCurrentPriceUseCase findCurrentPriceUseCase) {
+        this.findCurrentPriceUseCase = findCurrentPriceUseCase;
     }
 
     @GetMapping(SEARCH)
@@ -31,7 +31,7 @@ public class PriceController {
             @RequestParam long brandId,
             @RequestParam long productId,
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime applicationDate) {
-        return new PriceDto(priceService.findCurrentPrice(brandId, productId, applicationDate));
+        return new PriceDto(findCurrentPriceUseCase.findCurrentPrice(brandId, productId, applicationDate));
     }
 
 }
