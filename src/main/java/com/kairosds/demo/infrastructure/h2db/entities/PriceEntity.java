@@ -1,6 +1,6 @@
 package com.kairosds.demo.infrastructure.h2db.entities;
 
-import com.kairosds.demo.domain.model.Price;
+import com.kairosds.demo.domain.model.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -25,7 +25,7 @@ public class PriceEntity {
     private Long id;
 
     @NotNull
-    private Integer brandId;
+    private Long brandId;
 
     @NotNull
     @Column(columnDefinition = "TIMESTAMP")
@@ -38,12 +38,12 @@ public class PriceEntity {
     private Integer priceList;
 
     @NotNull
-    private Integer productId;
+    private Long productId;
 
     private Integer priority;
 
     @NotNull
-    private BigDecimal price;
+    private BigDecimal priceValue;
 
     @NotNull
     @NotBlank
@@ -52,14 +52,14 @@ public class PriceEntity {
     public Price toPrice() {
         return Price
                 .builder()
-                .brandId(brandId)
+                .brandId(BrandId.builder().value(brandId).build())
                 .startDate(startDate)
                 .endDate(endDate)
                 .priceList(priceList)
-                .productId(productId)
-                .priority(priority)
-                .price(price)
-                .currency(currency)
+                .productId(ProductId.builder().value(productId).build())
+                .priority(Priority.builder().value(priority).build())
+                .priceValue(PriceValue.builder().value(priceValue).build())
+                .currency(Currency.builder().value(currency).build())
                 .build();
     }
 

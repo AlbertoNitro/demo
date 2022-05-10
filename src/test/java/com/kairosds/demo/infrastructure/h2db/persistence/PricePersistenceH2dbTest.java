@@ -3,17 +3,15 @@ package com.kairosds.demo.infrastructure.h2db.persistence;
 import com.kairosds.demo.TestConfig;
 import com.kairosds.demo.domain.model.Price;
 import com.kairosds.demo.domain.services.SeederDBService;
-import com.kairosds.demo.infrastructure.h2db.entities.PriceEntity;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @TestConfig
 @Slf4j
@@ -25,8 +23,8 @@ class PricePersistenceH2dbTest {
     @Autowired
     SeederDBService seederDBService;
 
-    private final int BRAND_ID_DEFAULT = 1;
-    private final int PRODUCT_ID_DEFAULT = 35455;
+    private final long BRAND_ID_DEFAULT = 1L;
+    private final long PRODUCT_ID_DEFAULT = 35455L;
 
     @BeforeEach
     void setUp() {
@@ -39,39 +37,12 @@ class PricePersistenceH2dbTest {
     }
 
     @Test
-    void findFirstByBrandIdAndProductIdAndStartDateLessThanEqualAndEndDateGreaterThanEqualOrderByStartDateDescDay14Hour10Test() {
-        verifyFindFirstByBrandIdAndProductIdAndStartDateLessThanEqualAndEndDateGreaterThanEqualOrderByStartDateDesc(LocalDateTime.of(2020, 6, 14, 10, 0, 0),
-                seederDBService.getPriceEntityWithPrice3550());
-    }
-
-    @Test
-    void findFirstByBrandIdAndProductIdAndStartDateLessThanEqualAndEndDateGreaterThanEqualOrderByStartDateDescDay14Hour16Test() {
-        verifyFindFirstByBrandIdAndProductIdAndStartDateLessThanEqualAndEndDateGreaterThanEqualOrderByStartDateDesc(LocalDateTime.of(2020, 6, 14, 16, 0, 0),
-                seederDBService.getPriceEntityWithPrice2545());
-    }
-
-    @Test
-    void findFirstByBrandIdAndProductIdAndStartDateLessThanEqualAndEndDateGreaterThanEqualOrderByStartDateDescDay14Hour21Test() {
-        verifyFindFirstByBrandIdAndProductIdAndStartDateLessThanEqualAndEndDateGreaterThanEqualOrderByStartDateDesc(LocalDateTime.of(2020, 6, 14, 21, 0, 0),
-                seederDBService.getPriceEntityWithPrice3550());
-    }
-
-    @Test
-    void findFirstByBrandIdAndProductIdAndStartDateLessThanEqualAndEndDateGreaterThanEqualOrderByStartDateDescDay15Hour10Test() {
-        verifyFindFirstByBrandIdAndProductIdAndStartDateLessThanEqualAndEndDateGreaterThanEqualOrderByStartDateDesc(LocalDateTime.of(2020, 6, 15, 10, 0, 0),
-                seederDBService.getPriceEntityWithPrice3050());
-    }
-
-    @Test
-    void findFirstByBrandIdAndProductIdAndStartDateLessThanEqualAndEndDateGreaterThanEqualOrderByStartDateDescDay15Hour21Test() {
-        verifyFindFirstByBrandIdAndProductIdAndStartDateLessThanEqualAndEndDateGreaterThanEqualOrderByStartDateDesc(LocalDateTime.of(2020, 6, 15, 21, 0, 0),
-                seederDBService.getPriceEntityWithPrice3895());
-    }
-
-    private void verifyFindFirstByBrandIdAndProductIdAndStartDateLessThanEqualAndEndDateGreaterThanEqualOrderByStartDateDesc(LocalDateTime applicationDate, PriceEntity priceEntity) {
-        log.info("applicationDate = " + applicationDate.toString());
-        List<Price> prices = pricePersistenceH2db.findFirstByBrandIdAndProductIdAndStartDateLessThanEqualAndEndDateGreaterThanEqualOrderByStartDateDesc(BRAND_ID_DEFAULT, PRODUCT_ID_DEFAULT, applicationDate, applicationDate);
-        log.info(prices.toString());
-        assertEquals(priceEntity.toPrice(), prices.get(0));
+    void findByBrandIdAndProductIdTest() {
+        List<Price> prices = pricePersistenceH2db.findByBrandIdAndProductId(BRAND_ID_DEFAULT, PRODUCT_ID_DEFAULT);
+        prices.stream().forEach(priceEntity -> log.info(priceEntity.toString()));
+        int countPrices = prices.size();
+        log.info("countPrices = " + countPrices);
+        final int NUM_TOTAL_PRICES = 4;
+        assertTrue(countPrices >= NUM_TOTAL_PRICES);
     }
 }

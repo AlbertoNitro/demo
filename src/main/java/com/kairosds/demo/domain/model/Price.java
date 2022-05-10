@@ -2,13 +2,8 @@ package com.kairosds.demo.domain.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-import javax.validation.constraints.NotBlank;
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Data
@@ -18,23 +13,30 @@ import java.time.LocalDateTime;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Price {
 
-    private Integer brandId;
+    @NonNull
+    private BrandId brandId;
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @NonNull
     private LocalDateTime startDate;
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @NonNull
     private LocalDateTime endDate;
 
+    @NonNull
     private Integer priceList;
 
-    private Integer productId;
+    @NonNull
+    private ProductId productId;
 
-    private Integer priority;
+    @NonNull
+    private Priority priority;
 
-    private BigDecimal price;
+    @NonNull
+    private PriceValue priceValue;
 
-    @NotBlank
-    private String currency;
+    @NonNull
+    private Currency currency;
 
 }

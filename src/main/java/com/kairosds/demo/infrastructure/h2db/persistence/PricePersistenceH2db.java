@@ -7,7 +7,6 @@ import com.kairosds.demo.infrastructure.h2db.entities.PriceEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -22,11 +21,12 @@ public class PricePersistenceH2db implements PricePersistence {
     }
 
     @Override
-    public List<Price> findFirstByBrandIdAndProductIdAndStartDateLessThanEqualAndEndDateGreaterThanEqualOrderByStartDateDesc(Integer brandId, Integer productId, LocalDateTime startDate, LocalDateTime endDate) {
+    public List<Price> findByBrandIdAndProductId(long brandId, long productId) {
         return priceDao
-                .findFirstByBrandIdAndProductIdAndStartDateLessThanEqualAndEndDateGreaterThanEqualOrderByStartDateDesc(brandId, productId, startDate, endDate)
+                .findByBrandIdAndProductId(brandId, productId)
                 .stream()
                 .map(PriceEntity::toPrice)
                 .collect(Collectors.toList());
     }
+
 }

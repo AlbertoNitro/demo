@@ -13,9 +13,9 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PriceDto {
-    private Integer productId;
+    private Long productId;
 
-    private Integer brandId;
+    private Long brandId;
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime startDate;
@@ -23,13 +23,13 @@ public class PriceDto {
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime endDate;
 
-    private BigDecimal price;
+    private BigDecimal priceValue;
 
-    public PriceDto(Price price) {
-        this.productId = price.getProductId();
-        this.brandId = price.getBrandId();
-        this.startDate = price.getStartDate();
-        this.endDate = price.getEndDate();
-        this.price = price.getPrice();
+    public PriceDto(Price priceValue) {
+        this.productId = priceValue.getProductId().getValue();
+        this.brandId = priceValue.getBrandId().getValue();
+        this.startDate = priceValue.getStartDate();
+        this.endDate = priceValue.getEndDate();
+        this.priceValue = priceValue.getPriceValue().getValue();
     }
 }
