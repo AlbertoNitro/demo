@@ -27,7 +27,8 @@
 > mvn spring-boot:run 
 ```
 5. La API REST queda expuesta en la URL: **http://localhost:8082/api/v0**
-6. Para comprobarlo puede realizar una petición HTTP de tipo GET a **http://localhost:8082/api/v0/ping**
+6. Para comprobarlo puede realizar una petición HTTP de tipo GET a **http://localhost:8082/api/v0/ping** o 
+7. Un ejemplo de busqueda de precio seria: **http://localhost:8082/api/v0/prices/search?brandId=1&productId=35455&applicationDate=2020-11-16T10:50:04.874Z**
 
 ### Arquitectura hexagonal (diagrama de paquetes)
 ![Arquitectura hexagonal - Diagrama de paquetes](docs/diagrama-de-paquetes.png))
